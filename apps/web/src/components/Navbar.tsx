@@ -9,8 +9,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';import InstagramIcon from '@mui/icons-material/Instagram';
 import logoBF from '../images/logoBF.png';
 
 const settings = ['Login'];
@@ -27,14 +26,14 @@ function Navbar() {
     };
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: '#EE6C78' }}>
+        <AppBar position="static" sx={{ backgroundColor: '#EE6C78', height: 65 }}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box
                         component="img"
                         src={logoBF}
                         alt="BonsFluidos Logo"
-                        sx={{ mr: 1, width: 35, height: 30 }} // Ajuste o tamanho conforme necessário
+                        sx={{ mr: 1, width: 35, height: 30 }}
                     />
                     <Typography
                         variant="h6"
@@ -43,10 +42,12 @@ function Navbar() {
                         href="#app-bar-with-responsive-menu"
                         sx={{
                             mr: 2,
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
+                            fontFamily: 'Playwrite CU, cursive',
+                            fontOpticalSizing: 'auto',
+                            fontStyle: 'normal',
+                            fontWeight: 500,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
+                            color: 'white',
                             textDecoration: 'none',
                         }}
                     >
@@ -57,14 +58,14 @@ function Navbar() {
                         <Tooltip title="Instagram">
                             <IconButton href='https://www.instagram.com/bonsfluidosutfpr?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==' target='blank'  sx={{ p: 0, mr: 2 }}>
                                 <Avatar sx={{ width: 30, height: 30, backgroundColor: '#E01F4C' }}>
-                                    <InstagramIcon sx={{ fontSize: 25 }} />
+                                    <InstagramIcon sx={{ fontSize: 30 }} />
                                 </Avatar>
                             </IconButton>
                         </Tooltip>
                         <Tooltip title="Login">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar sx={{ width: 30, height: 30, backgroundColor: '#E01F4C' }}>
-                                    <AccountCircleIcon sx={{ fontSize: 30 }} />
+                                    <AccountCircleOutlinedIcon sx={{ fontSize: 30 }} />
                                 </Avatar>
                             </IconButton>
                         </Tooltip>

@@ -1,6 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SessionContextProvider } from "./contexts/SessionContext";
 import { useSession } from "./hooks/useSession";
+import Navbar from "./components/Navbar";
+
+//Fontes Material Ui
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -12,6 +20,7 @@ const App = () => {
   return (
     <SessionContextProvider>
       <BrowserRouter>
+      <Navbar />
         <Routes>
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />

@@ -52,7 +52,7 @@ const refreshToken = async (req: Request, res: Response) => {
       "access"
     );
 
-    res.status(200).json({ accessToken, newRefreshToken });
+    res.status(200).json({ accessToken, refreshToken });
   } catch (error) {
     return res.sendStatus(401);
   }

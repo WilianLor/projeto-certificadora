@@ -1,6 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import { acessTokenSecret } from "../constants/secrets.contants";
+import { acessTokenSecret } from "../constants/secrets";
+import { AccessTokenPayload } from "../types";
+import User from "../schemas/user.schema";
 
 const authMiddleware = async (
   req: Request,
@@ -14,7 +16,18 @@ const authMiddleware = async (
   }
 
   try {
-    jwt.verify(accessToken || "", acessTokenSecret);
+    const decodedAccessToken = jwt.verify(
+      accessToken || "",
+      acessTokenSecret
+    ) as AccessTokenPayload;
+
+    const user = await User.findById(decodedAccessToken.userId);
+
+    if (!user) {
+      return res.status(401).send("Usuário não encontrado.");
+    }
+
+    (req as any).user = user;
 
     next();
   } catch (error) {

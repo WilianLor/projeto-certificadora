@@ -30,14 +30,26 @@ export const SessionContextProvider = ({
     const response = await api.post<ApiResponse<TokensData>>("/auth/login", {
       username,
       password,
+      
     });
+
+   
 
     if (response.data.status === "success") {
       window.localStorage.setItem("tokens", JSON.stringify(response.data.data));
 
       setIsLogged(true);
 
-      window.location.href = "/";
+      if(response.data.data?.admin === true){
+            window.location.href = "/admin";
+      }else {
+        window.location.href = "./donates";
+      }
+    
+      
+
+
+  
     } else {
       toast(response.data.error, { type: "error" });
     }
@@ -46,6 +58,7 @@ export const SessionContextProvider = ({
   const logout = () => {
     window.localStorage.removeItem("tokens");
     setIsLogged(false);
+    window.location.href = "/login";
   };
 
   return (

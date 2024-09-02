@@ -11,8 +11,12 @@ const authMiddleware = async (
 ) => {
   const accessToken = req.headers["authorization"];
 
+
+
   if (!accessToken) {
+    console.log(accessToken)
     return res.status(401).send("Acesso negado, token não informado.");
+    
   }
 
   try {

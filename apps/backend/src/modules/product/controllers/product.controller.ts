@@ -11,6 +11,9 @@ const createProduct = async (req: Request, res: Response) => {
     });
   }
 
+
+ 
+
   if (await Product.findOne({ name })) {
     return res.json({
       status: "error",
@@ -22,6 +25,10 @@ const createProduct = async (req: Request, res: Response) => {
 
   return res.status(201).json({ status: "success", data: product });
 };
+
+
+
+
 
 const listProducts = async (req: Request, res: Response) => {
   const products = await Product.find();

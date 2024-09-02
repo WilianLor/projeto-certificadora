@@ -1,7 +1,13 @@
+
 import '../styles/home.css';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
+
 const Home = () => {
+
+ 
+
+
   return (
     <main className="main-container" id='oi'>
       <article className="main-article">

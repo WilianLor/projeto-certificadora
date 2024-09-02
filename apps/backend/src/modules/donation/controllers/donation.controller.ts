@@ -9,10 +9,12 @@ const createDonation = async (req: Request, res: Response) => {
   const createDonationsData = req.body as CreateDonationData[];
 
   if (!Array.isArray(createDonationsData)) {
+    console.log(createDonationsData)
     return res.json({ status: "error", message: "Formato inválido dos dados" });
   }
 
   if (!createDonationsData.length) {
+    
     return res.json({
       status: "error",
       message: "Envie pelo menos uma doação",
@@ -58,11 +60,24 @@ const createDonation = async (req: Request, res: Response) => {
   return res.status(201).json({ status: "success", data: donations });
 };
 
+
+
+
+
+
+
 const listDonations = async (req: Request, res: Response) => {
   const donations = await Donation.find();
 
   return res.status(200).json({ status: "success", data: donations });
 };
+
+
+
+
+
+
+
 
 const listUserDonations = async (req: Request, res: Response) => {
   const user = (req as any).user as IUser;

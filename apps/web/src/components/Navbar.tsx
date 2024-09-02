@@ -83,15 +83,17 @@ function Navbar() {
                 </Avatar>
               </IconButton>
             </Tooltip>
+          
             <Tooltip title="Login">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  sx={{ width: 30, height: 30, backgroundColor: "#E01F4C" }}
-                >
-                  <AccountCircleOutlinedIcon sx={{ fontSize: 30 }} />
-                </Avatar>
-              </IconButton>
-            </Tooltip>
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar
+                sx={{ width: 30, height: 30, backgroundColor: "#E01F4C" }}
+              >
+                <AccountCircleOutlinedIcon sx={{ fontSize: 30 }} />
+              </Avatar>
+            </IconButton>
+          </Tooltip>
+         
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"

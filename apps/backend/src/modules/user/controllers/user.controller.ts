@@ -23,6 +23,11 @@ const createUser = async (req: Request, res: Response) => {
   return res.status(201).json({ status: "success", data: user });
 };
 
+
+
+
+
+
 const getUser = async (req: Request, res: Response) => {
   const { _id } = (req as any).user as any;
 

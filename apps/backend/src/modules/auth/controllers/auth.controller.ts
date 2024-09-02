@@ -26,7 +26,13 @@ const login = async (req: Request, res: Response) => {
 
   return res
     .status(201)
-    .json({ status: "success", data: { refreshToken, accessToken } });
+    .json({ status: "success", data: { 
+      username: user.username,
+      admin: user.admin,
+      refreshToken,
+      accessToken 
+    
+    } });
 };
 
 const refreshToken = async (req: Request, res: Response) => {
@@ -51,6 +57,7 @@ const refreshToken = async (req: Request, res: Response) => {
       "15m",
       "access"
     );
+    
 
     res.status(200).json({ accessToken, refreshToken });
   } catch (error) {

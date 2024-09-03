@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import '../../styles/donations.css';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
-import axios from 'axios';
+import api from '../../services/api'; // Importando a instância configurada do Axios
 import { toast } from 'react-toastify';
 import { SessionContext } from '../../contexts/SessionContext';
 
@@ -30,7 +30,6 @@ const Donates = () => {
       window.location.href = "./login"
     }
   }, [])
-
 
   const upQuantityDonation = (productId: string) => {
     setQuantities(prevQuantities => ({
@@ -71,82 +70,52 @@ const Donates = () => {
   }, [quantities, doar]);
 
   useEffect(() => {
-    axios.get("http://localhost:3030/product/list", {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": ""
-      }
-    })
-    .then(response => {
-      setDoar(response.data.data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    api.get("/product/list")
+      .then(response => {
+        setDoar(response.data.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }, []);
 
   useEffect(() => {
-    axios.get("http://localhost:3030/donation/list-user", {
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": ""
-      }
-    })
-    .then(response => {
-      setMyDonate(response.data.data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  }, []);
-
-  const sendDonateNow = () => {
-    axios.post(
-      "http://localhost:3030/donation/",
-      sendDonate,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": ""
-        }
-      }
-    )
-    .then(response => {
-  
-      if(response.data.status === "success"){
-        toast.success("Doação realizada com sucesso!")
-      }
-      axios.get("http://localhost:3030/donation/list-user", {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": ""
-        }
-      })
+    api.get("/donation/list-user")
       .then(response => {
-       
         setMyDonate(response.data.data);
       })
       .catch(error => {
         console.log(error);
       });
-    })
-    .catch(error => {
-      console.log(error);
-    });
+  }, []);
+
+  const sendDonateNow = () => {
+    api.post("/donation/", sendDonate)
+      .then(response => {
+        if(response.data.status === "success"){
+          toast.success("Doação realizada com sucesso!");
+        }
+        api.get("/donation/list-user")
+          .then(response => {
+            setMyDonate(response.data.data);
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
-
-
-
 
   function formData(isoDate: string){
     const date = new Date(isoDate);
-const day = String(date.getDate()).padStart(2, '0');
-const month = String(date.getMonth() + 1).padStart(2, '0'); // Mês é zero-indexado
-const year = date.getFullYear();
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Mês é zero-indexado
+    const year = date.getFullYear();
 
-const formattedDate = `${day}/${month}/${year}`;
-
-   return formattedDate;
+    const formattedDate = `${day}/${month}/${year}`;
+    return formattedDate;
   }
 
   return (
@@ -169,7 +138,6 @@ const formattedDate = `${day}/${month}/${year}`;
                   <div className="card-my-donate" key={index}>
                     <div className="header-card-my-donate">
                       <InfoOutlinedIcon />
-                   
                     </div>
 
                     <div className="text-my-donate">

@@ -23,7 +23,7 @@ const Donates = () => {
   const [doar, setDoar] = useState<Donation[]>([]);
   const [myDonate, setMyDonate] = useState<Donation[]>([]);
   const [sendDonate, setSendDonate] = useState<DonationForArray[]>([]);
-  const { isLogged } = useContext(SessionContext)
+  const { isLogged, nome }:any = useContext(SessionContext)
 
   useEffect(() => {
     if(isLogged === false){
@@ -123,7 +123,7 @@ const Donates = () => {
       <article className="main-article">
         <div className='sections-container'>
           <section className="section-one">
-            Bem-vindo(a), nome da pessoa
+            Bem-vindo(a), {nome}
           </section>
         
           <section className='main-donations'>

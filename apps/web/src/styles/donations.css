@@ -289,3 +289,7 @@
         padding: 15px;
     }
 }
+
+.modalShowForm {
+    display: none
+}

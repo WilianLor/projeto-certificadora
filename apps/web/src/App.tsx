@@ -12,7 +12,6 @@ import { theme } from "./styles/global.theme";
 import { ToastContainer } from "react-toastify";
 import Router from "./Router";
 import CreateNewUserProvider from "./contexts/CreateNewUserContext";
-import RefreshTokenProvider from "./contexts/RefreshToken";
 
 const App = () => {
   const {} = useSession();
@@ -21,12 +20,10 @@ const App = () => {
     <ThemeProvider theme={theme}>
       
       <SessionContextProvider>
-        <RefreshTokenProvider>
       <CreateNewUserProvider>
         <ToastContainer />
         <Router />
         </CreateNewUserProvider>
-        </RefreshTokenProvider>
       </SessionContextProvider>
       
     </ThemeProvider>

@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import '../../styles/donations.css';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import axios from 'axios';
-import { RefreshTokenContext } from '../../contexts/RefreshToken';
 import { toast } from 'react-toastify';
 import { SessionContext } from '../../contexts/SessionContext';
 
@@ -24,7 +23,6 @@ const Donates = () => {
   const [doar, setDoar] = useState<Donation[]>([]);
   const [myDonate, setMyDonate] = useState<Donation[]>([]);
   const [sendDonate, setSendDonate] = useState<DonationForArray[]>([]);
-  const { token }: any = useContext(RefreshTokenContext);
   const { isLogged } = useContext(SessionContext)
 
   useEffect(() => {
@@ -32,12 +30,6 @@ const Donates = () => {
       window.location.href = "./login"
     }
   }, [])
-
-
-
-
-
-
 
 
   const upQuantityDonation = (productId: string) => {
@@ -82,7 +74,7 @@ const Donates = () => {
     axios.get("http://localhost:3030/product/list", {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": token
+        "Authorization": ""
       }
     })
     .then(response => {
@@ -91,13 +83,13 @@ const Donates = () => {
     .catch(error => {
       console.log(error);
     });
-  }, [token]);
+  }, []);
 
   useEffect(() => {
     axios.get("http://localhost:3030/donation/list-user", {
       headers: {
         "Content-Type": "application/json",
-        "Authorization": token
+        "Authorization": ""
       }
     })
     .then(response => {
@@ -106,7 +98,7 @@ const Donates = () => {
     .catch(error => {
       console.log(error);
     });
-  }, [token]);
+  }, []);
 
   const sendDonateNow = () => {
     axios.post(
@@ -115,7 +107,7 @@ const Donates = () => {
       {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": token
+          "Authorization": ""
         }
       }
     )
@@ -127,7 +119,7 @@ const Donates = () => {
       axios.get("http://localhost:3030/donation/list-user", {
         headers: {
           "Content-Type": "application/json",
-          "Authorization": token
+          "Authorization": ""
         }
       })
       .then(response => {

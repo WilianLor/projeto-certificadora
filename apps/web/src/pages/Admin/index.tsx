@@ -23,6 +23,8 @@ const Admin = () => {
     const showModalUser = () => {
         const modalUser = document.querySelector("#modalUser");
         modalUser?.classList.add("modalUser");
+        const modalShowForm:any = document.querySelector(".modalShowForm");
+        modalShowForm.style.display = "flex";
     }
 
     const handleCloseModal = (event: any) => {
@@ -64,7 +66,7 @@ const Admin = () => {
 
             <div id="modalUser" onClick={handleCloseModal}>
                 <div className="bodyModal">
-                    <Grid2 size={{ xs: 12 }}>
+                    <Grid2 className="modalShowForm" size={{ xs: 12 }}>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <Grid2 container spacing={2}>
                                 <Grid2 size={{ xs: 12 }}>

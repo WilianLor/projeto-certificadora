@@ -85,10 +85,6 @@ const Login = () => {
 
               
               </Grid2>
-
-              <Grid2>
-              <p>Ainda não possui uma conta? <a href="./createUser">Criar agora</a></p>
-              </Grid2>
             </Grid2>
           </form>
         </Grid2>

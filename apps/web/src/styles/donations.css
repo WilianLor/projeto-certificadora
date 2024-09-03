@@ -13,7 +13,20 @@
     align-items: center;
 }
 
+.button {
+    border-width: 2px;
+    border-radius: 44px;
+    border-color: #E01F4C;
+    background-color: #e01f4c58;
+    color: #87122e;
+    font-weight: bold;
+}
 
+.button:hover {
+    background-color: #e01f4c1d;
+    border-color: #eb486e;
+    color: #822b3f;
+}
 
 .sections-container {
     display: flex;
@@ -26,6 +39,17 @@
     width: 95%;
     height: 10vh;
     margin-bottom: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-size: 5vh;
+    font-weight: 600;
+}
+
+.text-section-one {
+
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -174,22 +198,18 @@
     align-items: center;
     justify-content: space-between;
     padding: 18px;
-    border:1px solid #842241    ;
+    border: 1px solid #842241;
     border-radius: 8px;
 
-    &&
-
-    .addQuantityDonations {
+    && .addQuantityDonations {
         display: flex;
         align-items: center;
         gap: 20px;
-        
-        &&
 
-        p {
+        && p {
             font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
+            font-weight: bold;
+            cursor: pointer;
         }
     }
 }
@@ -200,11 +220,9 @@
     align-items: end;
     justify-content: flex-end;
     position: fixed;
- 
- 
-    && 
 
-    button {
+
+    && button {
         padding: 18px;
         border-radius: 8px;
         background: none;
@@ -279,9 +297,26 @@
     top: 0;
     background-color: #0000005b;
 
-    &&
+    && .bodyModal {
+        width: 550px;
+        height: 550px;
+        background-color: #fff;
+        border-radius: 12px;
+        padding: 15px;
+    }
+}
 
-    .bodyModal {
+.modalProd {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    background-color: #0000005b;
+
+    && .bodyModal {
         width: 550px;
         height: 550px;
         background-color: #fff;
@@ -291,5 +326,9 @@
 }
 
 .modalShowForm {
+    display: none
+}
+
+.modalShowFormProd {
     display: none
 }

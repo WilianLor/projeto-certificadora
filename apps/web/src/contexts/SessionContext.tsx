@@ -7,6 +7,7 @@ interface SessionContextType {
   login: (username: string, password: string) => Promise<void>;
   logout: () => void;
   isLogged?: boolean;
+  nome?:any;
 }
 
 interface SessionContextProviderProps {
@@ -55,6 +56,25 @@ export const SessionContextProvider = ({
     }
   };
 
+  const [nome, setNome]:any = useState<string>("")
+
+  useEffect(() => {
+    const getName = () => {
+      // Obtenha o item 'tokens' do localStorage
+      const usuario = window.localStorage.getItem("tokens");
+
+      // Verifique se o item não é null e faça o parse do JSON
+      if (usuario) {
+        const parsedUsuario = JSON.parse(usuario);
+
+        // Acesse o 'username' e defina o estado
+        setNome(parsedUsuario.username);
+      }
+    };
+
+    getName();
+  }, []);
+  
   const logout = () => {
     window.localStorage.removeItem("tokens");
     setIsLogged(false);
@@ -62,7 +82,7 @@ export const SessionContextProvider = ({
   };
 
   return (
-    <SessionContext.Provider value={{ login, logout, isLogged }}>
+    <SessionContext.Provider value={{ login, logout, isLogged, nome}}>
       {children}
     </SessionContext.Provider>
   );

@@ -226,7 +226,7 @@ const Admin = () => {
                                     disabled={isOnSubmitting}
                                 // sx={{ textTransform: "none" }}
                                 >
-                                    Criar usuário
+                                    Criar Produto
                                 </button>
                             </Grid2>
                         </Grid2>

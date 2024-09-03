@@ -4,13 +4,14 @@ import cors from "cors";
 import dotenv from "dotenv";
 import { connectDatabase } from "./config/database.config";
 import routes from "./routes";
+import { seedDatabase } from "./seed";
 
 dotenv.config();
 
 const app = express();
 
 connectDatabase();
-
+seedDatabase()
 app.set("port", process.env.PORT || 3030);
 
 app.use(bodyParser.json());

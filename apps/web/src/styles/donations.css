@@ -22,7 +22,20 @@
     font-weight: bold;
 }
 
-.button:hover {
+.buton {
+    padding: 5px;
+    border-width: 2px;
+    border-radius: 44px;
+    border-color: #E01F4C;
+    background-color: #e01f4c58;
+    color: #87122e;
+    font-weight: bold;
+}
+
+
+.button:hover,
+.buton:hover {
+    cursor: pointer;
     background-color: #e01f4c1d;
     border-color: #eb486e;
     color: #822b3f;
@@ -191,6 +204,18 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin: 10px 0;
+    border: 4px 4px;
+    border-color: #000000;
 }
 
 .dona {
